@@ -1,0 +1,38 @@
+<app-header
+[presupuestoTotal]="getPresupuestoTotal()"
+[ingresoTotal]="getIngresoTotal()"
+[egresoTotal]="getEgresoTotal()"
+[porcentajeTotal]="getPorcentajeTotal()"
+></app-header>
+
+<app-formulario></app-formulario>
+
+  <div class="contenedor limpiarEstilos">
+      <div class="ingreso">
+          <h2 class="ingreso_titulo">Ingresos</h2>
+             
+              <app-ingresos
+              *ngFor="let ingreso of ingresos; let i = index"
+              [ingreso]="ingreso"
+              [indice]="i"
+              (Itoeliminar)="eliminar($event)"
+              ></app-ingresos>   
+      </div>
+      
+      
+      
+      <div class="egreso">
+          <h2 class="egreso_titulo">Egresos</h2>
+             
+              
+              <app-egresos
+              *ngFor="let egreso of egresos; let i=index"
+              [egreso]="egreso"
+              [indice]="i"
+              [ingresoTotal]="getIngresoTotal()"
+              (iToEliminar)="eliminarE($event)"
+              ></app-egresos>
+
+                    
+      </div>
+  </div>
